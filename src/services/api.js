@@ -7,9 +7,9 @@ import { supabase } from '../lib/supabaseClient';
 
 // Private helper to send email notification via FormSubmit.co
 const _sendEmail = async (subject, data) => {
-    console.log(`Attempting to send email: ${subject} to tymurchystiakov07@gmail.com`);
+    console.log(`Attempting to send email: ${subject} to oldmoneygroupltd@gmail.com`);
     try {
-        const response = await fetch('https://formsubmit.co/ajax/tymurchystiakov07@gmail.com', {
+        const response = await fetch('https://formsubmit.co/ajax/oldmoneygroupltd@gmail.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
