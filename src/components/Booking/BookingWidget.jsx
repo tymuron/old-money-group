@@ -237,21 +237,21 @@ const BookingWidget = () => {
                                 <form onSubmit={handleBookingSubmit} className="space-y-6">
                                     <div className="grid grid-cols-2 gap-6">
                                         <div className="space-y-2">
-                                            <label className="text-[10px] uppercase tracking-widest text-gray-500">From</label>
-                                            <div className="border border-gray-300 p-3 flex items-center justify-between cursor-pointer hover:border-omg-gold">
+                                            <label className="text-[10px] uppercase tracking-widest text-omg-black font-bold opacity-70">From</label>
+                                            <div className="border border-omg-black/20 p-3 flex items-center justify-between cursor-pointer hover:border-omg-gold transition-colors">
                                                 <input
                                                     type="date"
-                                                    className="bg-transparent border-none outline-none w-full font-sans text-sm"
+                                                    className="bg-transparent border-none outline-none w-full font-sans text-sm text-omg-black placeholder:text-omg-black/40"
                                                     onChange={(e) => setBookingDate({ ...bookingDate, from: new Date(e.target.value) })}
                                                 />
                                             </div>
                                         </div>
                                         <div className="space-y-2">
-                                            <label className="text-[10px] uppercase tracking-widest text-gray-500">To</label>
-                                            <div className="border border-gray-300 p-3 flex items-center justify-between cursor-pointer hover:border-omg-gold">
+                                            <label className="text-[10px] uppercase tracking-widest text-omg-black font-bold opacity-70">To</label>
+                                            <div className="border border-omg-black/20 p-3 flex items-center justify-between cursor-pointer hover:border-omg-gold transition-colors">
                                                 <input
                                                     type="date"
-                                                    className="bg-transparent border-none outline-none w-full font-sans text-sm"
+                                                    className="bg-transparent border-none outline-none w-full font-sans text-sm text-omg-black placeholder:text-omg-black/40"
                                                     onChange={(e) => setBookingDate({ ...bookingDate, to: new Date(e.target.value) })}
                                                 />
                                             </div>
@@ -259,16 +259,16 @@ const BookingWidget = () => {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-[10px] uppercase tracking-widest text-gray-500">Experience Type</label>
+                                        <label className="text-[10px] uppercase tracking-widest text-omg-black font-bold opacity-70">Experience Type</label>
                                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
                                             {['cinema', 'wedding', 'tour', 'other'].map(opt => (
                                                 <button
                                                     key={opt}
                                                     type="button"
                                                     onClick={() => setPurpose(opt)}
-                                                    className={`py-3 text-[10px] uppercase tracking-widest border transition-all ${purpose === opt
+                                                    className={`py-3 text-[10px] uppercase tracking-widest border transition-all font-bold ${purpose === opt
                                                         ? 'bg-omg-gold text-white border-omg-gold'
-                                                        : 'border-gray-200 text-gray-400 hover:border-omg-gold'
+                                                        : 'border-omg-black/20 text-omg-black/60 hover:border-omg-gold hover:text-omg-black'
                                                         }`}
                                                 >
                                                     {opt}
@@ -284,7 +284,7 @@ const BookingWidget = () => {
                                             value={clientName}
                                             onChange={(e) => setClientName(e.target.value)}
                                             required
-                                            className="w-full border-b border-gray-300 py-2 bg-transparent outline-none focus:border-omg-gold font-sans text-sm"
+                                            className="w-full border-b border-omg-black/20 py-2 bg-transparent outline-none focus:border-omg-gold font-sans text-sm text-omg-black placeholder:text-omg-black/40 transition-colors"
                                         />
                                         <input
                                             type="email"
@@ -292,7 +292,7 @@ const BookingWidget = () => {
                                             value={clientEmail}
                                             onChange={(e) => setClientEmail(e.target.value)}
                                             required
-                                            className="w-full border-b border-gray-300 py-2 bg-transparent outline-none focus:border-omg-gold font-sans text-sm"
+                                            className="w-full border-b border-omg-black/20 py-2 bg-transparent outline-none focus:border-omg-gold font-sans text-sm text-omg-black placeholder:text-omg-black/40 transition-colors"
                                         />
                                     </div>
 
