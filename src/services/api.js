@@ -7,8 +7,9 @@ import { supabase } from '../lib/supabaseClient';
 
 // Private helper to send email notification via FormSubmit.co
 const _sendEmail = async (subject, data) => {
+    console.log(`Attempting to send email: ${subject} to tymurchystiakov07@gmail.com`);
     try {
-        await fetch('https://formsubmit.co/ajax/tymurchystiakov07@gmail.com', {
+        const response = await fetch('https://formsubmit.co/ajax/tymurchystiakov07@gmail.com', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -16,13 +17,24 @@ const _sendEmail = async (subject, data) => {
             },
             body: JSON.stringify({
                 _subject: `OM Group: ${subject}`,
-                _template: 'table', // Formats JSON as a nice table
-                _captcha: 'false',  // Disable captcha if possible
+                _template: 'table',
+                _captcha: 'false',
+                email: data.email || data.client_email || 'noreply@oldmoney.group', // Important for Reply-To
                 ...data
             })
         });
+
+        if (response.ok) {
+            console.log('Email sent successfully!');
+            // alert('System: Notification sent to admin email.'); // Optional: Uncomment if user wants confirmation
+        } else {
+            const errText = await response.text();
+            console.error('Email service error:', errText);
+            alert(`Email Notification Failed: Channel verification required. Check console.`);
+        }
     } catch (e) {
-        console.warn("Email notification failed (non-critical):", e);
+        console.error("Email network error:", e);
+        alert("Email Notification Network Error. Please check your internet connection or ad-blocker.");
     }
 };
 
