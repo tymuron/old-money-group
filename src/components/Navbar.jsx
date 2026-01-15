@@ -21,31 +21,8 @@ const Navbar = () => {
     const element = document.querySelector(id);
     if (!element) return;
 
-    const yOffset = -80;
-    const targetY = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    const startY = window.pageYOffset;
-    const distance = targetY - startY;
-    const duration = 800; // Fixed 800ms duration (faster than browser default for long pages)
-    let start = null;
-
-    const step = (timestamp) => {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      const percentage = Math.min(progress / duration, 1);
-
-      // Easing: easeInOutCubic
-      const ease = percentage < 0.5
-        ? 4 * percentage * percentage * percentage
-        : 1 - Math.pow(-2 * percentage + 2, 3) / 2;
-
-      window.scrollTo(0, startY + distance * ease);
-
-      if (progress < duration) {
-        window.requestAnimationFrame(step);
-      }
-    };
-
-    window.requestAnimationFrame(step);
+    // Native smooth scroll (handled by CSS + this call)
+    element.scrollIntoView({ behavior: 'smooth' });
   };
 
   const navLinks = [
