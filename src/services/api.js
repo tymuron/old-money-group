@@ -214,5 +214,27 @@ export const api = {
         await _sendEmail('New Contact Message', messageData);
 
         return true;
+    },
+
+    fetchContactMessages: async (status = 'new') => {
+        const { data, error } = await supabase
+            .from('contact_messages')
+            .select('*')
+            .eq('status', status)
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        return data;
+    },
+
+    updateContactStatus: async (id, status) => {
+        const { data, error } = await supabase
+            .from('contact_messages')
+            .update({ status })
+            .eq('id', id)
+            .select();
+
+        if (error) throw error;
+        return data[0];
     }
 };

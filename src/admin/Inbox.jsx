@@ -4,9 +4,10 @@ import { format } from 'date-fns';
 import { Mail, Check, Archive, Clock, AlertCircle } from 'lucide-react';
 
 const Inbox = () => {
-    const [activeTab, setActiveTab] = useState('bookings'); // 'bookings' | 'registry'
+    const [activeTab, setActiveTab] = useState('bookings'); // 'bookings' | 'registry' | 'messages'
     const [bookings, setBookings] = useState([]);
     const [registrySubmissions, setRegistrySubmissions] = useState([]);
+    const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -21,9 +22,12 @@ const Inbox = () => {
             if (activeTab === 'bookings') {
                 const data = await api.fetchBookingRequests('pending');
                 setBookings(data);
-            } else {
+            } else if (activeTab === 'registry') {
                 const data = await api.fetchRegistrySubmissions('new');
                 setRegistrySubmissions(data);
+            } else {
+                const data = await api.fetchContactMessages('new');
+                setMessages(data);
             }
         } catch (err) {
             console.error(err);
@@ -38,9 +42,12 @@ const Inbox = () => {
             if (type === 'booking') {
                 await api.updateBookingStatus(id, newStatus);
                 setBookings(prev => prev.filter(b => b.id !== id));
-            } else {
+            } else if (type === 'registry') {
                 await api.updateRegistryStatus(id, newStatus);
                 setRegistrySubmissions(prev => prev.filter(r => r.id !== id));
+            } else {
+                await api.updateContactStatus(id, newStatus);
+                setMessages(prev => prev.filter(m => m.id !== id));
             }
         } catch (err) {
             alert('Failed to update status');
@@ -71,9 +78,10 @@ const Inbox = () => {
                 <div className="flex gap-8">
                     <TabButton id="bookings" label="Access Requests" />
                     <TabButton id="registry" label="Asset Queue" />
+                    <TabButton id="messages" label="Inquiries" />
                 </div>
                 <div className="pb-4 text-xs font-sans text-gray-400 uppercase tracking-widest">
-                    {activeTab === 'bookings' ? bookings.length : registrySubmissions.length} Pending
+                    {activeTab === 'bookings' ? bookings.length : activeTab === 'registry' ? registrySubmissions.length : messages.length} Pending
                 </div>
             </div>
 
@@ -95,7 +103,7 @@ const Inbox = () => {
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">
                                         <span className={`px-2 py-1 text-[10px] uppercase tracking-widest font-bold rounded ${req.purpose === 'cinema' ? 'bg-purple-100 text-purple-700' :
-                                                req.purpose === 'wedding' ? 'bg-pink-100 text-pink-700' : 'bg-omg-green/10 text-omg-green'
+                                            req.purpose === 'wedding' ? 'bg-pink-100 text-pink-700' : 'bg-omg-green/10 text-omg-green'
                                             }`}>
                                             {req.purpose}
                                         </span>
@@ -177,6 +185,47 @@ const Inbox = () => {
                                             Process
                                         </button>
                                     </div>
+                                </div>
+                            </div>
+                        ))
+                    )}
+                </div>
+            )}
+            {/* Messages View */}
+            {activeTab === 'messages' && (
+                <div className="space-y-4">
+                    {messages.length === 0 ? (
+                        <div className="text-center py-20 text-gray-400 font-serif italic text-xl">No unread messages.</div>
+                    ) : (
+                        messages.map((msg) => (
+                            <div key={msg.id} className="bg-white p-6 border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-full group">
+                                <div>
+                                    <div className="flex items-center justify-between mb-4">
+                                        <div className="flex items-center gap-2">
+                                            <span className="w-2 h-2 rounded-full bg-omg-green animate-pulse"></span>
+                                            <span className="font-serif text-lg text-omg-green">{msg.name}</span>
+                                        </div>
+                                        <span className="text-[10px] font-mono text-gray-400">{format(new Date(msg.created_at), 'MMM dd, HH:mm')}</span>
+                                    </div>
+                                    <p className="text-xs text-gray-500 mb-4 font-sans border-b border-gray-50 pb-2">{msg.email}</p>
+                                    <div className="bg-gray-50 p-4 rounded text-sm text-gray-700 italic border-l-2 border-omg-gold/50">
+                                        "{msg.message}"
+                                    </div>
+                                </div>
+
+                                <div className="flex justify-end gap-3 mt-6 opacity-100 md:opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <button
+                                        onClick={() => window.location.href = `mailto:${msg.email}`}
+                                        className="text-xs flex items-center gap-1 text-gray-400 hover:text-omg-green transition-colors uppercase tracking-wider font-bold"
+                                    >
+                                        <Mail size={14} /> Reply
+                                    </button>
+                                    <button
+                                        onClick={() => handleUpdateStatus(msg.id, 'read', 'message')}
+                                        className="text-xs flex items-center gap-1 text-gray-400 hover:text-omg-black transition-colors uppercase tracking-wider font-bold"
+                                    >
+                                        <Archive size={14} /> Archive
+                                    </button>
                                 </div>
                             </div>
                         ))
