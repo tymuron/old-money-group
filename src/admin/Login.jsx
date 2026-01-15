@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabaseClient';
 import { motion } from 'framer-motion';
 
 const Login = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -23,7 +25,7 @@ const Login = () => {
             setLoading(false);
         } else {
             // Redirect will be handled by auth state change or router
-            window.location.href = '/admin/dashboard';
+            navigate('/admin/dashboard');
         }
     };
 
