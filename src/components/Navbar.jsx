@@ -16,8 +16,18 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (e, id) => {
+    e.preventDefault();
+    const element = document.querySelector(id);
+    if (element) {
+      const yOffset = -80; // Navbar height offset
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  };
+
   const navLinks = [
-    { name: t('nav.collection'), href: '#collection' },
+    { name: t('nav.collection'), href: '#booking-widget' },
     { name: t('nav.registry'), href: '#registry' },
     { name: t('nav.experience'), href: '#booking-widget' },
     { name: t('nav.contact'), href: '#contact' },
@@ -40,7 +50,8 @@ const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className="font-sans text-sm tracking-[0.2em] hover:text-omg-gold transition-colors uppercase"
+              onClick={(e) => scrollToSection(e, link.href)}
+              className="font-sans text-sm tracking-[0.2em] hover:text-omg-gold transition-colors uppercase cursor-pointer"
             >
               {link.name}
             </a>
@@ -99,7 +110,10 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + index * 0.1 }}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => {
+                    setIsMobileMenuOpen(false);
+                    scrollToSection(e, link.href);
+                  }}
                   className="font-serif text-3xl md:text-4xl text-omg-cream hover:text-omg-gold transition-colors"
                 >
                   {link.name}

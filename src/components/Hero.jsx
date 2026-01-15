@@ -32,14 +32,24 @@ const Hero = () => {
                 </p>
 
                 <div className="flex gap-6">
-                    <button className="px-8 py-3 border border-omg-cream text-omg-cream font-sans text-xs uppercase tracking-[0.2em] font-bold relative overflow-hidden group transition-all duration-300">
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.querySelector('#booking-widget')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="px-8 py-3 border border-omg-cream text-omg-cream font-sans text-xs uppercase tracking-[0.2em] font-bold relative overflow-hidden group transition-all duration-300">
                         <span className="relative z-10 group-hover:text-omg-green transition-colors duration-300">
                             {t('hero.cta')}
                         </span>
                         <div className="absolute inset-0 h-full w-full bg-omg-cream transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left ease-out"></div>
                     </button>
 
-                    <button className="px-8 py-3 border border-omg-cream/30 text-omg-cream font-sans text-xs uppercase tracking-[0.2em] font-bold hover:border-omg-cream transition-colors">
+                    <button
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="px-8 py-3 border border-omg-cream/30 text-omg-cream font-sans text-xs uppercase tracking-[0.2em] font-bold hover:border-omg-cream transition-colors">
                         {t('nav.contact')}
                     </button>
                 </div>
