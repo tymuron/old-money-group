@@ -260,8 +260,8 @@ const BookingWidget = () => {
 
                                     <div className="space-y-2">
                                         <label className="text-[10px] uppercase tracking-widest text-gray-500">Experience Type</label>
-                                        <div className="grid grid-cols-3 gap-3">
-                                            {['cinema', 'wedding', 'tour'].map(opt => (
+                                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                                            {['cinema', 'wedding', 'tour', 'other'].map(opt => (
                                                 <button
                                                     key={opt}
                                                     type="button"
