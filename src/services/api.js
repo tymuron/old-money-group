@@ -5,6 +5,27 @@ import { supabase } from '../lib/supabaseClient';
  * All database logic should reside here, isolating components from Supabase dependencies.
  */
 
+// Private helper to send email notification via FormSubmit.co
+const _sendEmail = async (subject, data) => {
+    try {
+        await fetch('https://formsubmit.co/ajax/tymurchystiakov07@gmail.com', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+                _subject: `OM Group: ${subject}`,
+                _template: 'table', // Formats JSON as a nice table
+                _captcha: 'false',  // Disable captcha if possible
+                ...data
+            })
+        });
+    } catch (e) {
+        console.warn("Email notification failed (non-critical):", e);
+    }
+};
+
 export const api = {
     // --- AUTH ---
     login: async (email, password) => {
@@ -93,11 +114,16 @@ export const api = {
 
     // --- BOOKING REQUESTS (CONCIERGE) ---
     submitBookingRequest: async (requestData) => {
+        // 1. Save to Database
         const { error } = await supabase
             .from('booking_requests')
             .insert([requestData]);
 
         if (error) throw error;
+
+        // 2. Send Email Notification
+        await _sendEmail('New Booking Request', requestData);
+
         return true;
     },
 
@@ -128,11 +154,16 @@ export const api = {
 
     // --- OWNER REGISTRY (LEAD GEN) ---
     submitRegistryForm: async (submissionData) => {
+        // 1. Save to Database
         const { error } = await supabase
             .from('registry_submissions')
             .insert([submissionData]);
 
         if (error) throw error;
+
+        // 2. Send Email Notification
+        await _sendEmail('New Registry Asset', submissionData);
+
         return true;
     },
 
@@ -160,11 +191,16 @@ export const api = {
 
     // --- CONTACT FORM ---
     submitContactMessage: async (messageData) => {
+        // 1. Save to Database
         const { error } = await supabase
             .from('contact_messages')
             .insert([messageData]);
 
         if (error) throw error;
+
+        // 2. Send Email Notification
+        await _sendEmail('New Contact Message', messageData);
+
         return true;
     }
 };
