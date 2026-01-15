@@ -70,9 +70,9 @@ const OwnerRegistry = () => {
     ];
 
     return (
-        <section id="registry" className="py-32 bg-omg-cream relative overflow-hidden">
+        <section id="registry" className="py-32 bg-omg-green relative overflow-hidden">
             {/* Background Texture */}
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 mix-blend-overlay pointer-events-none"></div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12">
 
@@ -81,25 +81,25 @@ const OwnerRegistry = () => {
                     <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-omg-gold mb-6 block">
                         {t('registry.subtitle')}
                     </span>
-                    <h2 className="font-serif text-5xl md:text-7xl text-omg-black mb-8">
+                    <h2 className="font-serif text-5xl md:text-7xl text-omg-cream mb-8">
                         {t('registry.title')}
                     </h2>
-                    <p className="font-serif text-xl text-omg-black/70 leading-relaxed italic">
+                    <p className="font-serif text-xl text-omg-cream/70 leading-relaxed italic">
                         {t('registry.intro')}
                     </p>
                 </div>
 
-                {/* Benefits Grid - Light Theme */}
+                {/* Benefits Grid - Dark & Gold Theme (Reverted) */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
                     {benefits.map((benefit, index) => (
-                        <div key={index} className="bg-white border border-omg-black/5 p-10 text-center hover:shadow-xl hover:border-omg-gold/30 transition-all duration-300 group">
-                            <div className="w-16 h-16 mx-auto mb-8 rounded-full border border-omg-gold/20 flex items-center justify-center text-omg-gold group-hover:bg-omg-green group-hover:text-omg-cream transition-all duration-300">
+                        <div key={index} className="bg-omg-black/20 border border-omg-cream/5 p-10 text-center hover:bg-omg-black/40 hover:border-omg-gold/30 transition-all duration-300 group">
+                            <div className="w-16 h-16 mx-auto mb-8 rounded-full border border-omg-gold/20 flex items-center justify-center text-omg-gold group-hover:bg-omg-gold group-hover:text-omg-black transition-all duration-300">
                                 <benefit.icon size={24} strokeWidth={1} />
                             </div>
-                            <h3 className="font-serif text-3xl text-omg-black mb-4">
+                            <h3 className="font-serif text-3xl text-omg-cream mb-4">
                                 {t(benefit.titleKey)}
                             </h3>
-                            <p className="font-sans text-xs leading-loose text-omg-black/60 uppercase tracking-widest group-hover:text-omg-black/80 transition-colors">
+                            <p className="font-sans text-xs leading-loose text-omg-cream/60 uppercase tracking-widest group-hover:text-omg-cream/80 transition-colors">
                                 {t(benefit.descKey)}
                             </p>
                         </div>
@@ -120,10 +120,10 @@ const OwnerRegistry = () => {
                 </div>
             </div>
 
-            {/* Submission Modal - Needs to stay readable (Light Theme for Form) */}
+            {/* Submission Modal */}
             {isModalOpen && createPortal(
                 <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 font-sans text-base antialiased">
-                    <div className="absolute inset-0 bg-omg-black/90 backdrop-blur-sm" onClick={() => setIsModalOpen(false)}></div>
+                    <div className="absolute inset-0 bg-omg-green/95 backdrop-blur-sm" onClick={() => setIsModalOpen(false)}></div>
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
