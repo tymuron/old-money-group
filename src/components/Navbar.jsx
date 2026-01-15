@@ -30,7 +30,7 @@ const Navbar = () => {
     >
       <div className="relative z-50 container mx-auto px-6 md:px-12 flex justify-between items-center text-omg-cream">
         {/* Branding */}
-        <a href="#" className="font-serif text-2xl tracking-widest font-bold">
+        <a href="#/" className="font-serif text-2xl tracking-widest font-bold">
           OLD MONEY
         </a>
 

@@ -106,7 +106,7 @@ const Login = () => {
                     </form>
 
                     <div className="flex items-center justify-between pt-8 border-t border-omg-black/5">
-                        <a href="/" className="font-sans text-[10px] uppercase tracking-widest text-omg-black/40 hover:text-omg-black transition-colors">Return to Site</a>
+                        <a href="#/" className="font-sans text-[10px] uppercase tracking-widest text-omg-black/40 hover:text-omg-black transition-colors">Return to Site</a>
                         <span className="font-sans text-[10px] text-omg-black/20">Secured via Supabase</span>
                     </div>
                 </div>
