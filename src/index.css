@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+@import 'react-day-picker/dist/style.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-radial-gradient {
+    background-image: radial-gradient(circle at center, var(--tw-gradient-from), var(--tw-gradient-to));
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-omg-green text-omg-cream antialiased selection:bg-omg-gold selection:text-omg-black;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fade In Animation Utility */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom DayPicker overrides for Old Money theme */
+.rdp {
+  --rdp-cell-size: 40px;
+  --rdp-accent-color: #4A5D23;
+  /* omg-olive */
+  --rdp-background-color: #F9F7F2;
+  /* omg-cream */
+  margin: 0;
+}
+
+.rdp-day_selected:not([disabled]) {
+  background-color: #4A5D23;
+  color: #F9F7F2;
+}
+
+.rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: #D4AF37;
+  /* omg-gold hover */
+  color: #2C2C2C;
+}
+
+/* Film Grain Overlay */
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 40;
+  /* Above most things, below modal/nav (50) */
+  opacity: 0.05;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(170%) brightness(100%);
+  /* Keep GPU hint as it's just good practice */
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
