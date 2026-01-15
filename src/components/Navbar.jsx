@@ -70,7 +70,9 @@ const Navbar = () => {
             ))}
           </div>
 
-          <button className="border border-omg-gold text-omg-gold px-6 py-2 font-sans text-xs tracking-[0.2em] hover:bg-omg-gold hover:text-omg-green transition-all uppercase">
+          <button
+            onClick={(e) => scrollToSection(e, '#booking-widget')}
+            className="border border-omg-gold text-omg-gold px-6 py-2 font-sans text-xs tracking-[0.2em] hover:bg-omg-gold hover:text-omg-green transition-all uppercase">
             {t('nav.book')}
           </button>
         </div>
@@ -99,7 +101,7 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
             className="fixed inset-0 z-40 bg-omg-green flex flex-col items-center justify-center md:hidden"
           >
             <div className="flex flex-col items-center space-y-8">
@@ -108,7 +110,7 @@ const Navbar = () => {
                   key={link.href}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 + index * 0.1 }}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.8 }}
                   href={link.href}
                   onClick={(e) => {
                     setIsMobileMenuOpen(false);
@@ -123,10 +125,15 @@ const Navbar = () => {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.6, duration: 1 }}
                 className="pt-8"
               >
-                <button className="px-10 py-4 border border-omg-gold text-omg-gold font-sans tracking-[0.2em] uppercase hover:bg-omg-gold hover:text-omg-green transition-all">
+                <button
+                  onClick={(e) => {
+                    setIsMobileMenuOpen(false);
+                    scrollToSection(e, '#booking-widget');
+                  }}
+                  className="px-10 py-4 border border-omg-gold text-omg-gold font-sans tracking-[0.2em] uppercase hover:bg-omg-gold hover:text-omg-green transition-all">
                   {t('nav.bookVisit')}
                 </button>
               </motion.div>

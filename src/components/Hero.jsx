@@ -11,9 +11,9 @@ const Hero = () => {
 
             {/* LEFT COLUMN: Text & Branding */}
             <motion.div
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -30 }} // Less extreme movement
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 1.5, ease: "easeOut" }} // Slower duration
                 className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12 md:py-0 z-10"
             >
                 <div className="mb-8">
@@ -57,9 +57,9 @@ const Hero = () => {
 
             {/* RIGHT COLUMN: Image */}
             <motion.div
-                initial={{ opacity: 0, scale: 1.1 }}
+                initial={{ opacity: 0, scale: 1.05 }} // Subtle zoom
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 6, ease: "easeOut" }}
+                transition={{ duration: 2.5, ease: "easeOut" }} // Much slower
                 className="w-full md:w-1/2 relative h-[50vh] md:h-screen overflow-hidden"
             >
                 <div className="absolute inset-0 bg-gradient-to-r from-omg-green via-transparent to-transparent z-10 pointer-events-none md:w-1/2"></div>
