@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top - 0 left - 0 w - full z - 50 transition - all duration - 500 ease -in -out ${isScrolled ? 'bg-omg-green/95 backdrop-blur-md py-4 shadow-xl' : 'bg-transparent py-8'
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ease-in-out ${isScrolled ? 'bg-omg-green/95 backdrop-blur-md py-4 shadow-xl' : 'bg-transparent py-8'
         } `}
     >
       <div className="relative z-50 container mx-auto px-6 md:px-12 flex justify-between items-center text-omg-cream">
@@ -52,7 +52,7 @@ const Navbar = () => {
               <button
                 key={lang}
                 onClick={() => setLanguage(lang)}
-                className={`font - sans text - xs uppercase tracking - widest transition - colors ${language === lang ? 'text-omg-gold font-bold' : 'text-omg-cream/60 hover:text-omg-cream'} `}
+                className={`font-sans text-xs uppercase tracking-widest transition-colors ${language === lang ? 'text-omg-gold font-bold' : 'text-omg-cream/60 hover:text-omg-cream'} `}
               >
                 {lang}
               </button>
