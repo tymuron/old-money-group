@@ -13,6 +13,8 @@ const Home = () => {
             <Navbar />
             <Hero />
             <BookingWidget />
+            {/* Elegant Separator */}
+            <div className="w-full h-px bg-gradient-to-r from-transparent via-omg-gold/30 to-transparent"></div>
             <OwnerRegistry />
             <ContactSection />
             <Footer />

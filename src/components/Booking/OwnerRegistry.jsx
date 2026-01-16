@@ -127,87 +127,87 @@ const OwnerRegistry = () => {
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="relative bg-omg-cream w-full max-w-4xl max-h-[90vh] shadow-2xl border border-omg-gold/20 flex flex-col overflow-hidden isolate"
+                        className="relative bg-omg-green w-full max-w-4xl max-h-[90vh] shadow-2xl border border-omg-gold/20 flex flex-col overflow-hidden isolate"
                     >
                         {!formSubmitted ? (
                             <>
                                 <div className="p-8 md:p-16 overflow-y-auto flex-1 overscroll-contain">
                                     <div className="text-center mb-16">
                                         <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-omg-gold block mb-2">Private Office Link</span>
-                                        <h3 className="font-serif text-4xl text-omg-green mb-4">{t('registry.modal_title')}</h3>
-                                        <div className="w-20 h-[1px] bg-omg-green/10 mx-auto"></div>
+                                        <h3 className="font-serif text-4xl text-omg-cream mb-4">{t('registry.modal_title')}</h3>
+                                        <div className="w-20 h-[1px] bg-omg-cream/10 mx-auto"></div>
                                     </div>
 
                                     <div className="space-y-16">
                                         {/* Section 1: The Asset */}
-                                        <div className="bg-white/50 p-8 border border-omg-green/5">
-                                            <h4 className="font-serif text-2xl text-omg-green mb-8 flex items-baseline justify-between">
+                                        <div className="bg-omg-black/20 p-8 border border-omg-cream/5">
+                                            <h4 className="font-serif text-2xl text-omg-cream mb-8 flex items-baseline justify-between">
                                                 <span>{t('registry.section_asset')}</span>
-                                                <span className="font-sans text-[10px] text-omg-green/40 uppercase tracking-widest">Section 01</span>
+                                                <span className="font-sans text-[10px] text-omg-cream/40 uppercase tracking-widest">Section 01</span>
                                             </h4>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-8">
                                                 <div className="md:col-span-2 space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_make')}</label>
-                                                    <input name="make_model" onChange={handleChange} type="text" placeholder="e.g. 1988 Porsche 911 Turbo" className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors placeholder:text-omg-green/20" />
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_make')}</label>
+                                                    <input name="make_model" onChange={handleChange} type="text" placeholder="e.g. 1988 Porsche 911 Turbo" className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors placeholder:text-omg-cream/20" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_year')}</label>
-                                                    <input name="year" onChange={handleChange} type="number" className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors" />
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_year')}</label>
+                                                    <input name="year" onChange={handleChange} type="number" className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_mileage')}</label>
-                                                    <input name="mileage" onChange={handleChange} type="text" className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors" />
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_mileage')}</label>
+                                                    <input name="mileage" onChange={handleChange} type="text" className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_location')}</label>
-                                                    <input name="location" onChange={handleChange} type="text" className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors" />
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_location')}</label>
+                                                    <input name="location" onChange={handleChange} type="text" className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_yield')}</label>
-                                                    <input name="expected_yield" onChange={handleChange} type="text" placeholder="€" className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors" />
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_yield')}</label>
+                                                    <input name="expected_yield" onChange={handleChange} type="text" placeholder="€" className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors" />
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Section 2: The Pedigree */}
-                                        <div className="bg-white/50 p-8 border border-omg-green/5">
-                                            <h4 className="font-serif text-2xl text-omg-green mb-8 flex items-baseline justify-between">
+                                        <div className="bg-omg-black/20 p-8 border border-omg-cream/5">
+                                            <h4 className="font-serif text-2xl text-omg-cream mb-8 flex items-baseline justify-between">
                                                 <span>{t('registry.section_pedigree')}</span>
-                                                <span className="font-sans text-[10px] text-omg-green/40 uppercase tracking-widest">Section 02</span>
+                                                <span className="font-sans text-[10px] text-omg-cream/40 uppercase tracking-widest">Section 02</span>
                                             </h4>
                                             <div className="space-y-8">
                                                 <div className="space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_history')}</label>
-                                                    <textarea name="history" onChange={handleChange} rows="4" placeholder={t('registry.placeholder_history')} className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors placeholder:text-omg-green/20 resize-none"></textarea>
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_history')}</label>
+                                                    <textarea name="history" onChange={handleChange} rows="4" placeholder={t('registry.placeholder_history')} className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors placeholder:text-omg-cream/20 resize-none"></textarea>
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_photos')}</label>
-                                                    <div className="border border-dashed border-omg-green/20 p-10 text-center hover:bg-white hover:border-omg-gold transition-all cursor-pointer group bg-omg-green/5">
-                                                        <UploadCloud className="w-8 h-8 text-omg-green/40 mx-auto mb-4 group-hover:text-omg-gold transition-colors" />
-                                                        <span className="font-sans text-xs uppercase tracking-wider text-omg-green/60">{t('registry.drag_drop')}</span>
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_photos')}</label>
+                                                    <div className="border border-dashed border-omg-cream/20 p-10 text-center hover:bg-omg-black/40 hover:border-omg-gold transition-all cursor-pointer group bg-omg-black/10">
+                                                        <UploadCloud className="w-8 h-8 text-omg-cream/40 mx-auto mb-4 group-hover:text-omg-gold transition-colors" />
+                                                        <span className="font-sans text-xs uppercase tracking-wider text-omg-cream/60">{t('registry.drag_drop')}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         {/* Section 3: The Owner */}
-                                        <div className="bg-white/50 p-8 border border-omg-green/5">
-                                            <h4 className="font-serif text-2xl text-omg-green mb-8 flex items-baseline justify-between">
+                                        <div className="bg-omg-black/20 p-8 border border-omg-cream/5">
+                                            <h4 className="font-serif text-2xl text-omg-cream mb-8 flex items-baseline justify-between">
                                                 <span>{t('registry.section_owner')}</span>
-                                                <span className="font-sans text-[10px] text-omg-green/40 uppercase tracking-widest">Section 03</span>
+                                                <span className="font-sans text-[10px] text-omg-cream/40 uppercase tracking-widest">Section 03</span>
                                             </h4>
                                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                 <div className="md:col-span-2 space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_name')}</label>
-                                                    <input name="contact_name" onChange={handleChange} type="text" className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors" />
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_name')}</label>
+                                                    <input name="contact_name" onChange={handleChange} type="text" className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_email')}</label>
-                                                    <input name="email" onChange={handleChange} type="email" className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors" />
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_email')}</label>
+                                                    <input name="email" onChange={handleChange} type="email" className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors" />
                                                 </div>
                                                 <div className="space-y-2">
-                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-green/60">{t('registry.label_phone')}</label>
-                                                    <input name="phone" onChange={handleChange} type="tel" className="w-full bg-white border border-omg-green/10 p-4 font-serif text-lg text-omg-green focus:outline-none focus:border-omg-gold transition-colors" />
+                                                    <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_phone')}</label>
+                                                    <input name="phone" onChange={handleChange} type="tel" className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors" />
                                                 </div>
                                             </div>
                                         </div>
@@ -215,9 +215,9 @@ const OwnerRegistry = () => {
                                 </div>
 
                                 {/* Fixed Footer */}
-                                <div className="p-8 border-t border-omg-green/5 bg-white z-20 flex justify-between items-center">
-                                    <button onClick={() => setIsModalOpen(false)} className="text-xs font-sans uppercase tracking-widest text-omg-green/40 hover:text-omg-green transition-colors">{t('concierge.btn_cancel')}</button>
-                                    <button onClick={handleSubmit} disabled={isSubmitting} className="bg-omg-green text-omg-cream px-10 py-5 font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-omg-black transition-colors flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed">
+                                <div className="p-8 border-t border-omg-cream/10 bg-omg-green z-20 flex justify-between items-center">
+                                    <button onClick={() => setIsModalOpen(false)} className="text-xs font-sans uppercase tracking-widest text-omg-cream/40 hover:text-omg-cream transition-colors">{t('concierge.btn_cancel')}</button>
+                                    <button onClick={handleSubmit} disabled={isSubmitting} className="bg-omg-gold text-omg-black px-10 py-5 font-sans text-xs uppercase tracking-[0.2em] font-bold hover:bg-white transition-colors flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed">
                                         {isSubmitting ? <Loader className="animate-spin" size={14} /> : (
                                             <>
                                                 {t('registry.submit_btn')}
@@ -228,7 +228,7 @@ const OwnerRegistry = () => {
                                 </div>
                             </>
                         ) : (
-                            <div className="text-center py-20 px-8 flex flex-col items-center justify-center h-full bg-omg-cream">
+                            <div className="text-center py-20 px-8 flex flex-col items-center justify-center h-full bg-omg-green">
                                 <motion.div
                                     initial={{ scale: 0.8, opacity: 0 }}
                                     animate={{ scale: 1, opacity: 1 }}
@@ -236,11 +236,11 @@ const OwnerRegistry = () => {
                                 >
                                     <span className="text-6xl mb-6 block drop-shadow-2xl">🍸</span>
                                 </motion.div>
-                                <h3 className="font-serif text-5xl text-omg-green mb-6">{t('registry.app_received_title')}</h3>
-                                <p className="font-sans text-sm text-omg-green/70 leading-relaxed mb-12 max-w-md mx-auto">
+                                <h3 className="font-serif text-5xl text-omg-cream mb-6">{t('registry.app_received_title')}</h3>
+                                <p className="font-sans text-sm text-omg-cream/70 leading-relaxed mb-12 max-w-md mx-auto">
                                     {t('registry.app_received_desc')}
                                 </p>
-                                <button onClick={() => setIsModalOpen(false)} className="text-xs font-sans uppercase tracking-widest border-b border-omg-green/20 pb-1 hover:border-omg-green text-omg-green transition-colors">
+                                <button onClick={() => setIsModalOpen(false)} className="text-xs font-sans uppercase tracking-widest border-b border-omg-cream/20 pb-1 hover:border-omg-cream text-omg-cream transition-colors">
                                     {t('registry.return_site')}
                                 </button>
                             </div>
