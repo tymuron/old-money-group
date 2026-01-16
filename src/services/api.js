@@ -165,16 +165,39 @@ export const api = {
     },
 
     // --- OWNER REGISTRY (LEAD GEN) ---
-    submitRegistryForm: async (submissionData) => {
-        // 1. Save to Database
+    submitRegistryForm: async (submissionData, imageFile) => {
+        let imageUrl = null;
+
+        // 1. Upload Image (if provided)
+        if (imageFile) {
+            const fileExt = imageFile.name.split('.').pop();
+            const fileName = `registry_${Date.now()}.${fileExt}`;
+            const { error: uploadError } = await supabase.storage
+                .from('car-images')
+                .upload(fileName, imageFile);
+
+            if (uploadError) {
+                console.error("Image upload failed:", uploadError);
+                // Continue without image or throw? Let's continue but log it.
+            } else {
+                const { data: { publicUrl } } = supabase.storage
+                    .from('car-images')
+                    .getPublicUrl(fileName);
+                imageUrl = publicUrl;
+            }
+        }
+
+        const finalData = { ...submissionData, image_url: imageUrl };
+
+        // 2. Save to Database
         const { error } = await supabase
             .from('registry_submissions')
-            .insert([submissionData]);
+            .insert([finalData]);
 
         if (error) throw error;
 
-        // 2. Send Email Notification
-        await _sendEmail('New Registry Asset', submissionData);
+        // 3. Send Email Notification
+        await _sendEmail('New Registry Asset', finalData);
 
         return true;
     },

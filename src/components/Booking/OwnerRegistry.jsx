@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
-import { Shield, TrendingUp, Key, UploadCloud, ChevronRight, Loader } from 'lucide-react';
+import { Shield, TrendingUp, Key, UploadCloud, ChevronRight, Loader, X, Check } from 'lucide-react';
 import { useLanguage } from '../../context/LanguageContext';
 import { api } from '../../services/api';
 
@@ -10,6 +10,10 @@ const OwnerRegistry = () => {
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { t } = useLanguage();
+
+    // File Upload State
+    const [imageFile, setImageFile] = useState(null);
+    const fileInputRef = useRef(null);
 
     const [formData, setFormData] = useState({
         make_model: '',
@@ -27,6 +31,12 @@ const OwnerRegistry = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
+    const handleFileSelect = (e) => {
+        if (e.target.files && e.target.files[0]) {
+            setImageFile(e.target.files[0]);
+        }
+    };
+
     const handleSubmit = async () => {
         if (!formData.make_model || !formData.contact_name || !formData.email) {
             alert("Please fill in the required fields (Make, Name, Email).");
@@ -41,7 +51,7 @@ const OwnerRegistry = () => {
                 contact_info: `${formData.contact_name}\n${formData.email}\n${formData.phone}`,
                 expected_yield: formData.expected_yield,
                 status: 'new'
-            });
+            }, imageFile); // Pass image file
             setFormSubmitted(true);
         } catch (error) {
             console.error(error);
@@ -180,11 +190,37 @@ const OwnerRegistry = () => {
                                                     <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_history')}</label>
                                                     <textarea name="history" onChange={handleChange} rows="4" placeholder={t('registry.placeholder_history')} className="w-full bg-omg-black/40 border border-omg-cream/10 p-4 font-serif text-lg text-omg-cream focus:outline-none focus:border-omg-gold transition-colors placeholder:text-omg-cream/20 resize-none"></textarea>
                                                 </div>
+
+                                                {/* File Upload Section */}
                                                 <div className="space-y-2">
                                                     <label className="block font-sans text-[10px] uppercase tracking-widest font-bold text-omg-cream/60">{t('registry.label_photos')}</label>
-                                                    <div className="border border-dashed border-omg-cream/20 p-10 text-center hover:bg-omg-black/40 hover:border-omg-gold transition-all cursor-pointer group bg-omg-black/10">
-                                                        <UploadCloud className="w-8 h-8 text-omg-cream/40 mx-auto mb-4 group-hover:text-omg-gold transition-colors" />
-                                                        <span className="font-sans text-xs uppercase tracking-wider text-omg-cream/60">{t('registry.drag_drop')}</span>
+
+                                                    <input
+                                                        type="file"
+                                                        ref={fileInputRef}
+                                                        onChange={handleFileSelect}
+                                                        accept="image/*"
+                                                        className="hidden"
+                                                    />
+
+                                                    <div
+                                                        onClick={() => fileInputRef.current?.click()}
+                                                        className={`border border-dashed transition-all cursor-pointer group p-10 text-center ${imageFile ? 'border-omg-gold bg-omg-gold/10' : 'border-omg-cream/20 bg-omg-black/10 hover:bg-omg-black/40 hover:border-omg-gold'}`}
+                                                    >
+                                                        {imageFile ? (
+                                                            <>
+                                                                <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-omg-gold text-omg-black flex items-center justify-center">
+                                                                    <Check size={24} />
+                                                                </div>
+                                                                <span className="font-sans text-xs uppercase tracking-wider text-omg-gold block font-bold">{imageFile.name}</span>
+                                                                <span className="text-[10px] text-omg-cream/40 mt-2 block">Click to change</span>
+                                                            </>
+                                                        ) : (
+                                                            <>
+                                                                <UploadCloud className="w-8 h-8 text-omg-cream/40 mx-auto mb-4 group-hover:text-omg-gold transition-colors" />
+                                                                <span className="font-sans text-xs uppercase tracking-wider text-omg-cream/60">{t('registry.drag_drop')}</span>
+                                                            </>
+                                                        )}
                                                     </div>
                                                 </div>
                                             </div>
