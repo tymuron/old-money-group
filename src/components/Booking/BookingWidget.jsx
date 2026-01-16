@@ -95,7 +95,7 @@ const BookingWidget = () => {
     const EraTab = ({ id, label }) => (
         <button
             onClick={() => handleEraChange(id)}
-            className={`pb-4 text-sm font-sans uppercase tracking-[0.2em] transition-all duration-500 relative ${selectedEra === id ? 'text-omg-black font-bold' : 'text-omg-black/60 hover:text-omg-black'}`}
+            className={`pb-4 text-sm font-sans uppercase tracking-[0.2em] transition-all duration-500 relative ${selectedEra === id ? 'text-omg-black font-bold' : 'text-omg-black hover:opacity-70 font-medium'}`}
         >
             {label}
             {selectedEra === id && (
