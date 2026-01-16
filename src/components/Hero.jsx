@@ -14,7 +14,7 @@ const Hero = () => {
                 initial={{ opacity: 0, x: -30 }} // Less extreme movement
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1.5, ease: "easeOut" }} // Slower duration
-                className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 lg:px-24 py-12 md:py-0 z-10"
+                className="w-full md:w-1/2 flex flex-col justify-center px-8 md:px-16 lg:px-24 pt-32 pb-12 md:py-0 z-10"
             >
                 <div className="mb-8">
                     <span className="font-sans text-xs tracking-[0.3em] uppercase text-omg-gold border-b border-omg-gold pb-1">

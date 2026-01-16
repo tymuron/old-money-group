@@ -120,11 +120,32 @@ const Navbar = () => {
                 </motion.a>
               ))}
 
+              {/* Mobile Language Switcher */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 1 }}
+                className="flex gap-8 py-4 border-t border-omg-cream/10 w-48 justify-center"
+              >
+                <button
+                  onClick={() => { setLanguage('en'); setIsMobileMenuOpen(false); }}
+                  className={`text-xl font-sans uppercase tracking-widest ${language === 'en' ? 'text-omg-gold font-bold' : 'text-omg-cream/40'}`}
+                >
+                  EN
+                </button>
+                <button
+                  onClick={() => { setLanguage('es'); setIsMobileMenuOpen(false); }}
+                  className={`text-xl font-sans uppercase tracking-widest ${language === 'es' ? 'text-omg-gold font-bold' : 'text-omg-cream/40'}`}
+                >
+                  ES
+                </button>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6, duration: 1 }}
-                className="pt-8"
+                className="pt-4"
               >
                 <button
                   onClick={(e) => {
