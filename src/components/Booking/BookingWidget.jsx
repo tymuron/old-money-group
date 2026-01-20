@@ -151,7 +151,7 @@ const BookingWidget = () => {
                                         alt={car.name || 'Car Image'}
                                         loading="lazy"
                                         style={{ objectPosition: 'center top' }} // Ensure top is preserved
-                                        className="w-full h-full object-cover scale-[1.08] transform group-hover:scale-[1.15] transition-transform duration-[1.5s] ease-out" // Zoom in to push watermark out
+                                        className="w-full h-full object-cover scale-[1.15] transform group-hover:scale-[1.22] transition-transform duration-[1.5s] ease-out" // Zoom in to push watermark out
                                     />
 
                                     {/* Status Badge */}
