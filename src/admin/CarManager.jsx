@@ -77,8 +77,6 @@ const CarManager = () => {
             fetchCars();
         } catch (error) {
             console.error(error);
-        } catch (error) {
-            console.error(error);
             alert(`Error deleting car: ${error.message || error.details || 'Unknown error'}`);
         }
     };
